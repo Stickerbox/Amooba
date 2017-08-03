@@ -9,17 +9,37 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var navThing: UIView!
+    @IBOutlet weak var best: UIView!
+    @IBOutlet weak var button: UIButton!
+    
+    var count = true
+    
+    @IBAction func go() {
+        if count {
+            best.animate(together:
+                .fill(toFit: self.view, topPadding: 50, leftPadding: 50, bottomPadding: 50, rightPadding: 50),
+                .changeColor(to: .blue))
+            
+            count = false
+        } else {
+            best.animate(together:
+                .anchor(width: 150, height: 200, x: 0, y: 0),
+                .changeColor(to: .black))
+            
+            count = true
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        startAnimation()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func startAnimation() {
+        navThing.animate(
+            .anchor(width: view.frame.width, height: 90, x: 0, y: view.frame.minY))
     }
-
-
+    
 }
-
