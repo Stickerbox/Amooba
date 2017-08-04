@@ -15,12 +15,21 @@ public struct Animation {
 }
 
 public extension Animation {
-    static func fadeIn(duration: TimeInterval = 0.3) -> Animation {
-        return Animation(duration: duration, updatesConstraint: false) { $0.alpha = 1 }
+    
+    static func fade(to alpha: CGFloat, duration: TimeInterval = 0.3) -> Animation {
+        return Animation(duration: duration, updatesConstraint: false) { $0.alpha = alpha }
     }
     
     static func resize(to size: CGSize, duration: TimeInterval = 0.3) -> Animation {
         return Animation(duration: duration, updatesConstraint: false) { $0.bounds.size = size }
+    }
+    
+    static func cornerRadius(to radius: CGFloat, duration: TimeInterval = 0.3) -> Animation {
+        return Animation(duration: duration, updatesConstraint: false, closure: { $0.layer.animateCornerRadius(to: radius, duration: duration) })
+    }
+    
+    static func wait(duration: TimeInterval) -> Animation {
+        return Animation(duration: duration, updatesConstraint: false, closure: { $0.alpha = $0.alpha - 0.000001 })
     }
     
     static func move(byX x: CGFloat, y: CGFloat, duration: TimeInterval = 0.3) -> Animation {
