@@ -25,11 +25,11 @@ public extension Animation {
     }
     
     static func cornerRadius(to radius: CGFloat, duration: TimeInterval = 0.3) -> Animation {
-        return Animation(duration: duration, updatesConstraint: false, closure: { $0.layer.animateCornerRadius(to: radius, duration: duration) })
+        return Animation(duration: duration, updatesConstraint: false) { $0.layer.animateCornerRadius(to: radius, duration: duration) }
     }
     
     static func wait(duration: TimeInterval) -> Animation {
-        return Animation(duration: duration, updatesConstraint: false, closure: { $0.alpha = $0.alpha - 0.000001 })
+        return Animation(duration: duration, updatesConstraint: false) { $0.alpha = $0.alpha - 0.000001 }
     }
     
     static func move(byX x: CGFloat, y: CGFloat, duration: TimeInterval = 0.3) -> Animation {
@@ -57,6 +57,6 @@ public extension Animation {
     }
     
     static func anchor(width: CGFloat, height: CGFloat, x: CGFloat, y: CGFloat, duration: TimeInterval = 0.3) -> Animation {
-        return Animation(duration: duration, updatesConstraint: true, closure: { $0.anchor(width: width, height: height, x: x, y: y) })
+        return Animation(duration: duration, updatesConstraint: true) { $0.anchor(width: width, height: height, x: x, y: y) }
     }
 }
