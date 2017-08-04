@@ -93,7 +93,7 @@ public extension UIView {
 internal extension UIView {
     
     func performAnimations(_ animations: [Animation], completionHandler: @escaping () -> Void) {
-
+        
         guard !animations.isEmpty else { return completionHandler() }
         
         var animations = animations
@@ -103,7 +103,7 @@ internal extension UIView {
             
             animation.closure(self)
             self.layoutIfNeeded()
-
+            
             UIView.animate(withDuration: animation.duration, animations: {
                 self.superview?.layoutIfNeeded()
             }, completion: { _ in
@@ -117,7 +117,7 @@ internal extension UIView {
                 self.performAnimations(animations, completionHandler: completionHandler)
             })
         }
-    
+        
     }
     
     func performAnimationsInParallel(_ animations: [Animation], completionHandler: @escaping () -> Void) {
@@ -143,7 +143,7 @@ internal extension UIView {
             if animation.updatesConstraint {
                 
                 animation.closure(self)
-
+                
                 UIView.animate(withDuration: animation.duration, animations: {
                     self.superview?.layoutIfNeeded()
                 }, completion: { _ in
@@ -159,5 +159,17 @@ internal extension UIView {
             }
             
         }
+    }
+}
+
+public extension CALayer {
+    
+    func animateCornerRadius(to radius: CGFloat, duration: TimeInterval) {
+        let animation = CABasicAnimation(keyPath: "cornerRadius")
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        animation.fromValue = self.cornerRadius
+        animation.toValue = radius
+        animation.duration = duration
+        self.add(animation, forKey: "cornerRadius")
     }
 }
