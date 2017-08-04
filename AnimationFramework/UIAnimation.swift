@@ -69,7 +69,7 @@ public extension UIView {
         return animate(animations)
     }
     
-    @discardableResult func animate(together animations: Animation...) -> AnimationToken {
+    @discardableResult func animateTogether(_ animations: Animation...) -> AnimationToken {
         return animate(together: animations)
     }
     
