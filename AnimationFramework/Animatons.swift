@@ -3,7 +3,7 @@
 //  AnimationFramework
 //
 //  Created by Jordan.Dixon on 02/08/2017.
-//  Copyright © 2017 Mubaloo. All rights reserved.
+//  Copyright © 2017 Jordan Dixon. All rights reserved.
 //
 
 import UIKit

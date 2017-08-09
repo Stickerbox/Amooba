@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C0CE2AB1F3AF4DB003C91DA /* CAAnimation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0CE2AA1F3AF4DB003C91DA /* CAAnimation+Extension.swift */; };
+		9C0CE2AF1F3AF553003C91DA /* PulseAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0CE2AE1F3AF553003C91DA /* PulseAnimation.swift */; };
+		9C0CE2B11F3AF566003C91DA /* ShakingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0CE2B01F3AF566003C91DA /* ShakingAnimation.swift */; };
 		9C50BF9E1F305EA800622B97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C50BF9D1F305EA800622B97 /* Assets.xcassets */; };
 		9C50BFA91F305EA800622B97 /* UIAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C50BFA81F305EA800622B97 /* UIAnimation.swift */; };
 		9CB7C76F1F31D8B3006AAB71 /* Animatons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7C76E1F31D8B3006AAB71 /* Animatons.swift */; };
@@ -15,12 +18,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9C0CE2AA1F3AF4DB003C91DA /* CAAnimation+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CAAnimation+Extension.swift"; path = "../CAAnimation+Extension.swift"; sourceTree = "<group>"; };
+		9C0CE2AE1F3AF553003C91DA /* PulseAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulseAnimation.swift; sourceTree = "<group>"; };
+		9C0CE2B01F3AF566003C91DA /* ShakingAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShakingAnimation.swift; sourceTree = "<group>"; };
 		9C50BF931F305EA800622B97 /* AnimationFramework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimationFramework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C50BF9D1F305EA800622B97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C50BFA21F305EA800622B97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9C50BFA81F305EA800622B97 /* UIAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAnimation.swift; sourceTree = "<group>"; };
-		9CB7C76E1F31D8B3006AAB71 /* Animatons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animatons.swift; sourceTree = "<group>"; };
-		9CB7C7701F31DB6C006AAB71 /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
+		9C50BFA81F305EA800622B97 /* UIAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIAnimation.swift; path = ../UIAnimation.swift; sourceTree = "<group>"; };
+		9CB7C76E1F31D8B3006AAB71 /* Animatons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Animatons.swift; path = ../Animatons.swift; sourceTree = "<group>"; };
+		9CB7C7701F31DB6C006AAB71 /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Constraints.swift"; path = "../UIView+Constraints.swift"; sourceTree = "<group>"; };
 		9CEB61611F3467E80050EE75 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -35,6 +41,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C0CE2AC1F3AF50C003C91DA /* UIViewAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				9C50BFA81F305EA800622B97 /* UIAnimation.swift */,
+				9CB7C76E1F31D8B3006AAB71 /* Animatons.swift */,
+				9CB7C7701F31DB6C006AAB71 /* UIView+Constraints.swift */,
+			);
+			path = UIViewAnimation;
+			sourceTree = "<group>";
+		};
+		9C0CE2AD1F3AF52B003C91DA /* CALayerAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				9C0CE2AA1F3AF4DB003C91DA /* CAAnimation+Extension.swift */,
+				9C0CE2AE1F3AF553003C91DA /* PulseAnimation.swift */,
+				9C0CE2B01F3AF566003C91DA /* ShakingAnimation.swift */,
+			);
+			path = CALayerAnimation;
+			sourceTree = "<group>";
+		};
 		9C50BF8A1F305EA800622B97 = {
 			isa = PBXGroup;
 			children = (
@@ -54,12 +80,11 @@
 		9C50BF951F305EA800622B97 /* AnimationFramework */ = {
 			isa = PBXGroup;
 			children = (
+				9C0CE2AD1F3AF52B003C91DA /* CALayerAnimation */,
+				9C0CE2AC1F3AF50C003C91DA /* UIViewAnimation */,
 				9CEB61611F3467E80050EE75 /* AppDelegate.swift */,
 				9C50BF9D1F305EA800622B97 /* Assets.xcassets */,
 				9C50BFA21F305EA800622B97 /* Info.plist */,
-				9C50BFA81F305EA800622B97 /* UIAnimation.swift */,
-				9CB7C76E1F31D8B3006AAB71 /* Animatons.swift */,
-				9CB7C7701F31DB6C006AAB71 /* UIView+Constraints.swift */,
 			);
 			path = AnimationFramework;
 			sourceTree = "<group>";
@@ -138,7 +163,10 @@
 				9CEB61621F3467E80050EE75 /* AppDelegate.swift in Sources */,
 				9CB7C7711F31DB6C006AAB71 /* UIView+Constraints.swift in Sources */,
 				9CB7C76F1F31D8B3006AAB71 /* Animatons.swift in Sources */,
+				9C0CE2B11F3AF566003C91DA /* ShakingAnimation.swift in Sources */,
 				9C50BFA91F305EA800622B97 /* UIAnimation.swift in Sources */,
+				9C0CE2AF1F3AF553003C91DA /* PulseAnimation.swift in Sources */,
+				9C0CE2AB1F3AF4DB003C91DA /* CAAnimation+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
