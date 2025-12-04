@@ -8,11 +8,15 @@
 
 import UIKit
 
+/// Defines the mode of execution for a set of animations.
 internal enum AnimationMode {
+    /// Animations are performed one after another.
     case inSequence
+    /// Animations are performed simultaneously.
     case inParallel
 }
 
+/// A class representing a token that manages the execution of a sequence or group of animations.
 public final class AnimationToken {
     
     private let view: UIView
@@ -20,6 +24,12 @@ public final class AnimationToken {
     private let mode: AnimationMode
     private var isValid = true
     
+    /// Initializes a new AnimationToken.
+    ///
+    /// - Parameters:
+    ///   - view: The view on which animations will be performed.
+    ///   - animations: An array of `Animation` objects to execute.
+    ///   - mode: The `AnimationMode` determining if animations run sequentially or in parallel.
     internal init(view: UIView, animations: [Animation], mode: AnimationMode) {
         self.view = view
         self.animations = animations
@@ -30,6 +40,9 @@ public final class AnimationToken {
         perform {}
     }
     
+    /// Performs the animations associated with this token.
+    ///
+    /// - Parameter completionHandler: A closure to be executed when the animations finish.
     internal func perform(completionHandler: @escaping() -> Void) {
         
         guard isValid else { return }
@@ -46,6 +59,9 @@ public final class AnimationToken {
     }
 }
 
+/// Executes a list of animation tokens sequentially.
+///
+/// - Parameter tokens: An array of `AnimationToken` objects to execute.
 public func animate(_ tokens: [AnimationToken]) {
     guard !tokens.isEmpty else {
         return
@@ -59,20 +75,35 @@ public func animate(_ tokens: [AnimationToken]) {
     }
 }
 
+/// Executes a variadic list of animation tokens sequentially.
+///
+/// - Parameter tokens: A variadic list of `AnimationToken` objects.
 public func animate(_ tokens: AnimationToken...) {
     animate(tokens)
 }
 
 public extension UIView {
     
+    /// Queues a list of animations to be performed sequentially on the view.
+    ///
+    /// - Parameter animations: A variadic list of `Animation` objects.
+    /// - Returns: An `AnimationToken` representing the queued animations.
     @discardableResult func animate(_ animations: Animation...) -> AnimationToken {
         return animate(animations)
     }
     
+    /// Queues a list of animations to be performed in parallel (simultaneously) on the view.
+    ///
+    /// - Parameter animations: A variadic list of `Animation` objects.
+    /// - Returns: An `AnimationToken` representing the queued animations.
     @discardableResult func animateTogether(_ animations: Animation...) -> AnimationToken {
         return animate(together: animations)
     }
     
+    /// Internal helper to create a sequential animation token.
+    ///
+    /// - Parameter animations: An array of `Animation` objects.
+    /// - Returns: An `AnimationToken`.
     @discardableResult private func animate(_ animations: [Animation]) -> AnimationToken {
         return AnimationToken(
             view: self,
@@ -81,6 +112,10 @@ public extension UIView {
         )
     }
     
+    /// Internal helper to create a parallel animation token.
+    ///
+    /// - Parameter animations: An array of `Animation` objects.
+    /// - Returns: An `AnimationToken`.
     @discardableResult private func animate(together animations: [Animation]) -> AnimationToken {
         return AnimationToken(
             view: self,
@@ -92,6 +127,11 @@ public extension UIView {
 
 internal extension UIView {
     
+    /// Performs a list of animations sequentially.
+    ///
+    /// - Parameters:
+    ///   - animations: The list of animations to perform.
+    ///   - completionHandler: The block to execute when all animations are finished.
     func performAnimations(_ animations: [Animation], completionHandler: @escaping () -> Void) {
         
         guard !animations.isEmpty else { return completionHandler() }
@@ -120,6 +160,11 @@ internal extension UIView {
         
     }
     
+    /// Performs a list of animations in parallel.
+    ///
+    /// - Parameters:
+    ///   - animations: The list of animations to perform.
+    ///   - completionHandler: The block to execute when all animations are finished.
     func performAnimationsInParallel(_ animations: [Animation], completionHandler: @escaping () -> Void) {
         
         guard !animations.isEmpty else { return completionHandler() }
@@ -164,6 +209,11 @@ internal extension UIView {
 
 public extension CALayer {
     
+    /// Animates the corner radius of the layer.
+    ///
+    /// - Parameters:
+    ///   - radius: The target corner radius.
+    ///   - duration: The duration of the animation in seconds.
     func animateCornerRadius(to radius: CGFloat, duration: TimeInterval) {
         let animation = CABasicAnimation(keyPath: "cornerRadius")
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
