@@ -10,6 +10,7 @@ import UIKit
 
 extension CAAnimation {
     
+    /// An enum representing common Core Animation key paths.
     enum KeyPath: String {
         case position
         case rotation
@@ -32,6 +33,9 @@ extension CAAnimation {
 
 extension CAKeyframeAnimation {
     
+    /// Initializes a CAKeyframeAnimation with a type-safe KeyPath.
+    ///
+    /// - Parameter keyPath: The `CAAnimation.KeyPath` enum value.
     convenience init(keyPath: KeyPath) {
         self.init(keyPath: keyPath.rawValue)
     }
@@ -39,6 +43,9 @@ extension CAKeyframeAnimation {
 
 extension CABasicAnimation {
     
+    /// Initializes a CABasicAnimation with a type-safe KeyPath.
+    ///
+    /// - Parameter keyPath: The `CAAnimation.KeyPath` enum value.
     convenience init(keyPath: KeyPath) {
         self.init(keyPath: keyPath.rawValue)
     }

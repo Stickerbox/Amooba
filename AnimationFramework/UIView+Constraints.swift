@@ -19,6 +19,7 @@ extension UIView {
         superview.addSubview(self)
     }
     
+    /// Removes existing constraints and anchors the view to fill its superview completely.
     public func fillSuperview() {
         
         removeConstraints()
@@ -35,6 +36,14 @@ extension UIView {
             ])
     }
     
+    /// Removes existing constraints and anchors the view to fill a target view with specified padding.
+    ///
+    /// - Parameters:
+    ///   - view: The target view to anchor to.
+    ///   - topPadding: The padding from the top edge.
+    ///   - leftPadding: The padding from the left edge.
+    ///   - bottomPadding: The padding from the bottom edge.
+    ///   - rightPadding: The padding from the right edge.
     public func fill(toFit view: UIView, topPadding: CGFloat, leftPadding: CGFloat, bottomPadding: CGFloat, rightPadding: CGFloat) {
         
         removeConstraints()
@@ -42,6 +51,20 @@ extension UIView {
         anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: topPadding, leftConstant: leftPadding, bottomConstant: bottomPadding, rightConstant: rightPadding)
     }
     
+    /// Anchors the view to the specified layout anchors with constants.
+    ///
+    /// - Parameters:
+    ///   - top: The top anchor to constraint to.
+    ///   - left: The left anchor to constraint to.
+    ///   - bottom: The bottom anchor to constraint to.
+    ///   - right: The right anchor to constraint to.
+    ///   - topConstant: The constant for the top constraint.
+    ///   - leftConstant: The constant for the left constraint.
+    ///   - bottomConstant: The constant for the bottom constraint.
+    ///   - rightConstant: The constant for the right constraint.
+    ///   - widthConstant: An optional width constant.
+    ///   - heightConstant: An optional height constant.
+    /// - Returns: An array of the activated `NSLayoutConstraint` objects.
     @discardableResult
     public func anchor(top: NSLayoutYAxisAnchor?, left: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, right: NSLayoutXAxisAnchor?, topConstant: CGFloat, leftConstant: CGFloat, bottomConstant: CGFloat, rightConstant: CGFloat, widthConstant: CGFloat? = nil, heightConstant: CGFloat? = nil) -> [NSLayoutConstraint] {
         
@@ -78,6 +101,9 @@ extension UIView {
         return anchors
     }
     
+    /// Anchors the view's center X to its superview's center X.
+    ///
+    /// - Parameter constant: The offset constant from the center. Defaults to 0.
     public func anchorCenterXToSuperview(constant: CGFloat = 0) {
         
         translatesAutoresizingMaskIntoConstraints = false
@@ -88,6 +114,9 @@ extension UIView {
         
     }
     
+    /// Anchors the view's center Y to its superview's center Y.
+    ///
+    /// - Parameter constant: The offset constant from the center. Defaults to 0.
     public func anchorCenterYToSuperview(constant: CGFloat = 0) {
         
         translatesAutoresizingMaskIntoConstraints = false
@@ -98,11 +127,25 @@ extension UIView {
         
     }
     
+    /// Anchors the view's center to its superview's center with offsets.
+    ///
+    /// - Parameters:
+    ///   - x: The X offset from the center. Defaults to 0.
+    ///   - y: The Y offset from the center. Defaults to 0.
     public func anchorCenterToSuperview(x: CGFloat = 0, y: CGFloat = 0) {
         anchorCenterXToSuperview(constant: x)
         anchorCenterYToSuperview(constant: y)
     }
     
+    /// Anchors the view with specific width, height, and center offsets relative to its superview.
+    ///
+    /// This method removes existing constraints before applying new ones.
+    ///
+    /// - Parameters:
+    ///   - width: The width constant.
+    ///   - height: The height constant.
+    ///   - x: The X offset from the superview center.
+    ///   - y: The Y offset from the superview center.
     public func anchor(width: CGFloat, height: CGFloat, x: CGFloat, y: CGFloat) {
         
         removeConstraints()

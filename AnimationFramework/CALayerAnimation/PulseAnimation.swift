@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// A CALayer subclass that creates a pulsing animation effect.
 class Pulsing: CALayer {
     
     var animationGroup = CAAnimationGroup()
@@ -26,6 +27,12 @@ class Pulsing: CALayer {
         super.init(coder: aDecoder)
     }
     
+    /// Initializes a new Pulsing layer.
+    ///
+    /// - Parameters:
+    ///   - numberOfPulses: The number of times the pulse animation should repeat. Defaults to infinity.
+    ///   - radius: The radius of the pulse effect.
+    ///   - position: The center position of the pulse.
     init(numberOfPulses: Float = Float.infinity, radius: CGFloat, position: CGPoint) {
         super.init()
         
@@ -51,6 +58,7 @@ class Pulsing: CALayer {
         
     }
     
+    /// Creates the scale animation for the pulse.
     var scaleAnimation: CABasicAnimation {
         
         let scaleAnimation = CABasicAnimation(keyPath: .transformScaleXY)
@@ -61,6 +69,7 @@ class Pulsing: CALayer {
         return scaleAnimation
     }
     
+    /// Creates the opacity animation for the pulse.
     var opacityAnimation: CAKeyframeAnimation {
         
         let opacityAnimation = CAKeyframeAnimation(keyPath: .opacity)
@@ -71,6 +80,7 @@ class Pulsing: CALayer {
         return opacityAnimation
     }
     
+    /// Sets up the animation group combining scale and opacity animations.
     func setupAnimationGroup() {
         
         animationGroup = CAAnimationGroup()

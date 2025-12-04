@@ -10,6 +10,9 @@ import UIKit
 
 extension UIView {
     
+    /// Shakes the view horizontally.
+    ///
+    /// This method adds a position animation to the view's layer, moving it back and forth.
     func shake() {
         
         let animation = CABasicAnimation(keyPath: .position)
